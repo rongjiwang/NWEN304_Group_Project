@@ -16,5 +16,6 @@
     "pg": "^6.2.3",
     "pg-native": "^1.10.1",
     "serve-favicon": "~2.4.2"
+    "bootstrap": "3.3.7"
   }
 }
