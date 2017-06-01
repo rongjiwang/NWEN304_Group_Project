@@ -5,10 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+var index = require('./routes/index'); //homepage
 var users = require('./routes/users');
 
 var app = express();
+
+var port = process.env.PORT || 8080;
+app.listen(port, function () {
+    console.log('Example app listening on port' + port);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
