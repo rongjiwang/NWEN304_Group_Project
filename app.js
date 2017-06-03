@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var cart = require('./routes/cart');
 var register = require('./routes/register');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
 
 var app = express();
 var port = process.env.PORT || 8080;
@@ -31,6 +32,8 @@ app.use('/', index);
 app.use('/cart', cart);
 app.use('/register', register);
 app.use('/login',login);
+app.use('/',logout);
+
 
 app.listen(port, function () {
     console.log('Example app listening on port' + port);
