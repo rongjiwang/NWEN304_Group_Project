@@ -1,24 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-  <% include components/head.ejs %>
+<html>
+  <head>
+    <% include ./header/header%>
+    <% include ./header/nav%>
+  </head>
+  <div class="container">
 
   <body>
-    <% include components/nav.ejs %>
-	
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-        <h2><%= title %></h2>
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="https://pmcvariety.files.wordpress.com/2017/03/baywatch-reboot.jpg?w=670&h=377&crop=1" alt="...">
+        <div class="caption">
+          <h3>Baywatch Movie</h3>
+          <p class="description">‘Baywatch’ Movie ‘Far Dirtier’ Than TV Show, Dwayne Johnson Says ‘Flesh Quota Was High’</p>
+          <div class="clearfix">
+            <div class="price pull-left">$25</div>
+            <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
 
-    </div><!-- /.container -->
+  <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-   
   </body>
+  </div>
+
 </html>
