@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html>
 <head>
-    <% include ./header/header %>
-    <% include ./header/nav %>
+    <% include ./layout/header %>
 </head>
 <div class="container">
     <body>
@@ -12,7 +9,7 @@
             <div class="thumbnail">
                 <img src="<%= data[i].image %>" class="img-responsive" width="200" height="200">
                 <div class="caption">
-                    <h3 ><%= data[i].name %></h3>
+                    <h3><%= data[i].name %></h3>
                     <p class="description"><%= data[i].description %></p>
                     <div class="clearfix">
                         <div class="price pull-left">$<%= data[i].price %></div>
@@ -22,20 +19,9 @@
             </div>
         </div>
         <% } %>
-
     </div>
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous">
-
-    </script>
     </body>
 </div>
+<% include ./layout/footer%>
+<% include ./layout/jquery%>
 
-</html>
