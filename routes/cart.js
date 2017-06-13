@@ -3,8 +3,8 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('users', {
-  	title: "This is the users page"
+  res.render('cart', {
+  	title: "My cart"
   });
 });
 

@@ -8,6 +8,7 @@ var csrfProtection = csrf();
 router.use(csrfProtection);
 /* GET home page. */
 
+
 router.get('/', function (req, res, next) {
     db.any('select * from item').then(data => {
         console.log(data);

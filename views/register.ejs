@@ -1,36 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-  <% include components/head.ejs %>
+	<!DOCTYPE html>
+	<html lang="en">
+	<% include components/head.ejs %>
+	<body>
+	 <% include components/nav.ejs %>
+	 <div class="container">
+	 	<div class = "body-panel">
+			<div class ="register-panel " >
+				<h3>Please fill in the forms below</h3>
+				<form method="get" action="#" style="float:center">
+						<label for="first_name" style="margin: 5px;">First Name</label>
+						<input type="text" name="first_name" id="first"><br/>
 
-  <body>
-     <% include components/nav.ejs %>
+						<label for="last_name" style="margin: 5px;">Last Name</label>
+						<input type="text" name="last_name" id="last_name"><br/>
 
-    <div class="container">
+						<label for="username" style="margin: 5px;">Username</label>
+						<input type="text" name="username" id="username"><br/>
 
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <h2><%= title %></h2>
-        <form method="get" action="#" style="float:left">
-   				<label for="first_name">First Name</label>
-				<input type="text" name="first_name" id="first_name"><br/>
-				
-				<label for="last_name">Last Name</label>
-				<input type="text" name="last_name" id="last_name"><br/>
-				
-				<label for="username">Username</label>
-				<input type="text" name="username" id="username"><br/>
-				
-				<label for="password">Password</label>
-				<input type="text" name="password" id="password">
-		</form>
-      </div>
+						<label for="password" style="margin: 5px;">Password</label>
+						<input type="text" name="password" id="password"><br/> 
+						<button type="button" id="submit-button" onclick="logUserIn();">Submit</button>
+						<br/>
+				</form>
+			</div>
+			<div class = "oAuthRegister">
+					<p> OR <p>
+					<br> </br>
+					<a href="#" class = "oAuthButton fbBtn"> Sign up with FB </a>
+					<br> </br>
+					<a href="#" class = "oAuthButton googleBtn"> Sign up with google </a>
+			</div>
+		</div>
+	</div>
 
-    </div><!-- /.container -->
+		<script>
+			function logUserIn(){
+			var user = $("#first").val();
+			var password = $("#last_name").val();
+			alert("first name : "+ user + "  last name: " + password);
+			}
+		</script>
+	</body>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-   
-  </body>
-</html>
+	</html>

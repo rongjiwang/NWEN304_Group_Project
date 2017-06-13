@@ -1,7 +1,77 @@
-body {
-  padding-top: 50px;
+body {  
+min-width:750px;
 }
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
+
+.sidebar{
+float: left;
+height:350px;
+margin-top: 150px;
+margin-left: 5px;
+margin-right: 5px;
+width: 200px;
+border: 3px solid red; 
 }
+
+.sidebar-panel{
+width:auto;
+height: auto;
+margin: 50px 10px 50px 10px;
+text-align: center;
+border: 3px solid blue; 
+
+}
+.body-panel{
+border: 3px solid red; 
+margin: 150px auto 200px auto; /* DONT REMOVE 'auto'because it resizes the elements inside the body panel with repsect to the window size*/
+text-align: center;
+resize: both;
+overflow: auto;
+}
+.register-panel{
+height: 500px;
+text-align: center;
+padding: 100px 100px 30px 100px;
+margin: 0px 100px 0px 100px;
+border: 3px solid pink; 
+}
+
+.login-panel{
+height: 306px;
+text-align: auto;
+padding: 50px 100px 50px 100px;
+margin: 0px 100px 0px 100px;
+border: 3px solid pink; 
+}
+
+.myNavBar{
+margin-top: 12px;
+}
+
+.oAuthRegister{
+border: 3px solid pink; 
+margin: 0px 100px 0px 100px;
+padding: 20px 50px 20px 50px;
+}
+
+.oAuthButton{
+font-size: 14px;
+line-height: 1;
+border-radius: 100px;
+padding: 10px 25px 10px;
+transition-property: background-color,border-color,color,box-shadow,filter;
+transition-duration: .3s;
+letter-spacing: 2px;
+min-width: 160px;
+text-transform: uppercase;
+color: #fff;
+}
+
+.fbBtn{
+background-color: #3b5998;
+}
+
+.googleBtn{
+background-color: #d14836;
+}
+
+

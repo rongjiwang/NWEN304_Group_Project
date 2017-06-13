@@ -2,7 +2,7 @@
  * Created by rongjiwang on 28/05/17.
  */
 var pg = require('pg').native
-    , connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang"
+    , connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/Raff"
     , client
     , query;
 
