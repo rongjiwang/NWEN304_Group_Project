@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-  <% include components/head.ejs %>
-  <body>
-    <% include components/nav.ejs %>
-    <div class="container">
-      <div class="body-panel">
-        <h1>Welcome to SNKRHEAD</h1>
-        <p> Lorem ipsum dolor sit amet  <br>
-        consectetur adipiscing elit. Donec pretium lectus risus, ac rhoncus purus bibendum sit amet. Duis feugiat augue pellentesque, vehicula velit vel, commodo ante. </br>
-      Nam non leo porta lorem sollicitudin dictum ac ac est. Phasellus a urna vel enim laoreet auctor quis ut felis. Quisque tristique in elit quis suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse malesuada mi vitae sem sagittis elementum.
-        asjdnakjnda
-        </p>
-      </div>
-  
-    </div>
+<html>
+<head>
+    <% include ./header/header %>
+    <% include ./header/nav %>
+</head>
+<div class="container">
+    <body>
+    <div class="row">
+        <% for(var i = 0; i < data.length; i++){ %>
+        <div class="col-lg-3 col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="<%= data[i].image %>" class="img-responsive" width="200" height="200">
+                <div class="caption">
+                    <h3 ><%= data[i].name %></h3>
+                    <p class="description"><%= data[i].description %></p>
+                    <div class="clearfix">
+                        <div class="price pull-left">$<%= data[i].price %></div>
+                        <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
 
-  </body>
+    </div>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous">
+
+    </script>
+    </body>
+</div>
+
 
 </html>

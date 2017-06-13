@@ -1,8 +1,11 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.thumbnail .description{
+  color: #7f9f9f
 }
-
-a {
-  color: #00B7FF;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width:100%;
+}
+.navbar-default .navbar-brand {
+  color: #d6d6d6;
 }
