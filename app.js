@@ -8,15 +8,17 @@ var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 
-var index = require('./routes/index'); //homepage
-var users = require('./routes/users');
+//routes
+var index = require('./routes/index'); 
+var cart = require('./routes/cart');
 var register = require('./routes/register');
+var login = require('./routes/login');
+var logout = require('./routes/logout');
+var results = require('./routes/results');
 
 var app = express();
 var port = process.env.PORT || 8080;
-app.listen(port, function () {
-    console.log('Example app listening on port' + port);
-});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,9 +37,17 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/cart', cart);
 app.use('/register', register);
+app.use('/login',login);
+app.use('/',logout); //directs back to the homepage when the user logs out
+app.use('/results',results);
 
+
+
+app.listen(port, function () {
+    console.log('Example app listening on port' + port);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

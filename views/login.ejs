@@ -1,0 +1,32 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<% include components/head.ejs %>
+	<body>
+	 <% include components/nav.ejs %>
+	 <div class="container">
+	 	<div class = "body-panel">
+			<div class ="login-panel">
+				<h3>LOG IN</h3>
+				<form method="get" action="#" style="float:center">
+						<label for="username">Username</label>
+						<input type="text" name="username" id="username"><br/>
+
+						<label for="password">Password</label>
+						<input type="text" name="password" id="password"><br/> 
+
+						<button type="button" id="submit-button" onclick="logUserIn();">Submit</button>
+						<br/>
+				</form>
+			</div>
+				<p> OR <p>
+			<div class = "oAuthRegister">
+					<br> </br>
+					<a href="#" class = "oAuthButton fbBtn"> FACEBOOK login</a>
+					<br> </br>
+					<a href="#" class = "oAuthButton googleBtn"> google login </a>
+			</div>
+		</div>
+	</div>
+
+	</body>
+</html>
