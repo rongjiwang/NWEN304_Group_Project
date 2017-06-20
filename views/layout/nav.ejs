@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><i class="fa fa-film" aria-hidden="true"></i>
+            <a class="navbar-brand" href="/"><i class="fa fa-film" aria-hidden="true"></i>
                 Life-Style</a>
         </div>
 
@@ -29,8 +29,14 @@
                        aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Account <span
                                 class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <% if(login){%>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                        <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                        <% }else{ %>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/user/signup"><i class="fa fa-sign-out" aria-hidden="true"></i>Register</a></li>
+                        <li><a href="/user/signin"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign In</a></li>
+                        <% } %>
                     </ul>
                 </li>
             </ul>
