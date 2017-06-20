@@ -3,6 +3,11 @@
 </head>
 <div class="container">
     <body>
+    <% if(!hasResult){ %>
+    <div class="alert alert-danger">
+        <%= message %>
+    </div>
+    <% } %>
     <div class="row">
         <% for(var i = 0; i < data.length; i++){ %>
         <div class="col-lg-3 col-sm-6 col-md-4">
@@ -22,6 +27,6 @@
     </div>
     </body>
 </div>
-<% include ./layout/footer%>
-<% include ./layout/jquery%>
+<% include ./layout/footer %>
+<% include ./layout/jquery %>
 
