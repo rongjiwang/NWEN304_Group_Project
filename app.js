@@ -9,6 +9,7 @@ var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
+var http = require('http');
 
 
 var index = require('./routes/index');
@@ -19,6 +20,9 @@ var port = process.env.PORT || 8080;
 
 
 require('./Database/passport');
+var server = http.createServer(app);
+
+server.listen(port);
 
 
 // view engine setup
