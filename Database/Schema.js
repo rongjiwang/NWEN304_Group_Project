@@ -103,7 +103,7 @@ query = client.query('insert into item(' +
 query = client.query('insert into item(' +
     'itemID,image,name,description,price,quantity) ' +
     'values (default,$1,$2,$3,$4,$5)'
-    ,['http://www.geeky-gadgets.com/wp-content/uploads/2016/12/Baywatch-movie.jpg',
+    ,['./images/Baywatch-movie.jpg',
         'Baywatch (2017)','Devoted lifeguard Mitch Buchannon butts heads with a brash new recruit, as they uncover a criminal plot that threatens the future of the bay.'
         ,32,10]);
 
