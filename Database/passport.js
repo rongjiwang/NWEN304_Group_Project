@@ -2,14 +2,16 @@ var passport = require('passport');
 var db = require('./config');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
+var oauth = require('./auth');
+var FacebookStrategy = require('passport-facebook').Strategy;
+
 
 passport.serializeUser(function (user, done) {
     done(null, user.emailaddress);
 });
 
-passport.deserializeUser(function (username, done) {
-    console.log(username);
-    db.any('select * from account where username=$1', [username])
+passport.deserializeUser(function (emailaddress, done) {
+    db.any('select * from account where emailaddress=$1', [emailaddress])
         .then(data => {
             done(null, data);
         })
@@ -47,7 +49,6 @@ passport.use('local.signup', new LocalStrategy({
                         , [newUser.emailaddress, newUser.password, newUser.emailaddress])
                         .then(data => {
                             //No error found, but user account exist
-                            console.log(data);
                             if (data.length > 0) {
                                 return done(null, false, {message: 'Email is already in use.'});
                             }
@@ -105,3 +106,47 @@ passport.use('local.signin', new LocalStrategy({
             });
     }
 ));
+
+passport.use(new FacebookStrategy({
+        clientID: oauth.facebookAuth.clientID,
+        clientSecret: oauth.facebookAuth.clientSecret,
+        callbackURL: oauth.facebookAuth.callbackURL,
+        profileFields: oauth.facebookAuth.profileFields
+    },
+    function (accessToken, refreshToken, profile, done) {
+        db.any('select * from account where username=$1', [profile.id])
+            .then(data => {
+                if (data.length == 0) {
+                    var newUser = {
+                        username: profile.id,
+                        emailaddress: profile.emails[0].value,
+                        password: accessToken,
+                        displayName: profile.name
+                    }
+                    db.any('insert into account values(default, $1,$2,$3,false)'
+                        , [newUser.username, newUser.password, newUser.emailaddress])
+                        .then(
+                            data => {
+                                if (data.length > 0) {
+                                    return done(null, false, {message: 'Email is already in use.'});
+
+                                }
+                                return done(null, newUser);
+                            }
+                        )
+                        .catch(error => {
+                            console.log('Facebook ERROR: ' + error);
+                            return done(error);
+                        });
+
+                }
+                else {
+                    return done(null, data[0]);
+                }
+            })
+            .catch(error => {
+                console.log('ERROR: ' + error);
+            });
+    }
+));
+
