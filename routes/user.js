@@ -9,6 +9,7 @@ var csrfProtection = csrf();
 router.use(csrfProtection);
 
 
+
 router.get('/profile', isLoggedIn, (req, res, next) => {
     res.render('user/profile');
 });
@@ -43,6 +44,16 @@ router.post('/signin', passport.authenticate('local.signin', {
     failureRedirect: '/user/signin',
     failureFlash: true
 }));
+
+
+router.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}));
+
+router.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/',
+        failureRedirect: '/user/signin',
+        failureFlash: true
+    }));
 
 module.exports = router;
 
