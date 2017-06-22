@@ -10,7 +10,7 @@ client = new pg.Client(connectionString);
 client.connect();
 
 query = client.query('' +
-    'DROP TABLE IF EXISTS CART;' +
+    'DROP TABLE IF EXISTS ORDERS;' +
     'DROP TABLE IF EXISTS ITEM;' +
     'DROP TABLE IF EXISTS ACCOUNT;' +
     'DROP TABLE IF EXISTS SESSION;'
@@ -35,30 +35,27 @@ query = client.query('' +
     'quantity INTEGER NOT NULL)');
 
 query = client.query('' +
-    'CREATE TABLE IF NOT EXISTS CART(' +
-    'cartID INTEGER,' +
-    'itemID INTEGER,' +
-    'quantity INTEGER, ' +
-    'expire DATE,' +
-    'sess CHAR,' +
-    'sid CHAR,' +
+    'CREATE TABLE IF NOT EXISTS ORDERS(' +
+    'orderID SERIAL PRIMARY KEY,' +
+    'cart json NOT NULL, ' +
+    'totalQty INTEGER, ' +
+    'totalPrice NUMERIC,' +
+    'userId INTEGER REFERENCES Account (userId), ' +
+    'active BOOLEAN)');
 
-    'PRIMARY KEY (cartID), ' +
-    'FOREIGN KEY (cartID) REFERENCES Account (userId))');
+/*query = client.query('CREATE OR REPLACE FUNCTION trigger_id() ' +
+ 'RETURNS TRIGGER AS $$ ' +
+ 'BEGIN ' +
+ 'INSERT INTO CART(cartid) VALUES(NEW.userid);' +
+ 'RETURN NULL;' +
+ 'END;' +
+ '$$ LANGUAGE ' + 'plpgsql' + ';');
 
-query = client.query('CREATE OR REPLACE FUNCTION trigger_id() ' +
-    'RETURNS TRIGGER AS $$ ' +
-    'BEGIN ' +
-    'INSERT INTO CART(cartid) VALUES(NEW.userid);' +
-    'RETURN NULL;' +
-    'END;' +
-    '$$ LANGUAGE ' + 'plpgsql' + ';');
-
-query = client.query('' +
-    'CREATE TRIGGER trigger_id_action ' +
-    'AFTER INSERT ON ACCOUNT ' +
-    'FOR EACH ROW ' +
-    'EXECUTE PROCEDURE trigger_id();');
+ query = client.query('' +
+ 'CREATE TRIGGER trigger_id_action ' +
+ 'AFTER INSERT ON ACCOUNT ' +
+ 'FOR EACH ROW ' +
+ 'EXECUTE PROCEDURE trigger_id();');*/
 
 query = client.query('CREATE TABLE session(' +
     'sid varchar NOT NULL COLLATE "default",' +
@@ -75,17 +72,17 @@ query = client.query('ALTER TABLE session ADD CONSTRAINT session_pkey' +
 query = client.query('insert into account(' +
     'userid,username,password,emailaddress,admin) ' +
     'values (default,$1,$2,$3,$4)'
-    , ['rong', '12345', 'rong@ttt.com', true]);
+    , ['rong', '123456', 'rong@ttt.com', true]);
 
 query = client.query('insert into account(' +
     'userid,username,password,emailaddress,admin) ' +
     'values (default,$1,$2,$3,$4)'
-    , ['raff', '12345', 'raff@ttt.com', true]);
+    , ['raff', '123456', 'raff@ttt.com', true]);
 
 query = client.query('insert into account(' +
     'userid,username,password,emailaddress,admin) ' +
     'values (default,$1,$2,$3,$4)'
-    , ['ad', '12345', 'ad@ttt.com', true]);
+    , ['ad', '123456', 'ad@ttt.com', true]);
 
 //----------Add items------------
 query = client.query('insert into item(' +

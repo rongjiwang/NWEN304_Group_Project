@@ -1,0 +1,49 @@
+<head>
+    <% include ../layout/header %>
+</head>
+<div class="container">
+    <body>
+    <% if(products.length>0){ %>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <ul class="list-group">
+                <% for(var i = 0; i < products.length; i++){ %>
+                <li class="list-group-item">
+                    <span style="font-weight: bold"><%= products[i].item.name %></span>
+                    <span class="label label-primary">$<%= products[i].price %></span>
+                    <span class="label label-primary">Units: <%= products[i].qty %></span>
+                    <a href="/reduceItem/<%=products[i].item.itemid%>" type="button" class="btn btn-danger  btn-sm pull-right">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true">One</span>
+
+                    </a>
+                </li>
+
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+            <strong>Total: <%= totalPrice %></strong>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+            <a href="/purchase" type="button" class="btn btn-success">Purchase</a>
+        </div>
+    </div>
+    <% }else{ %>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+            <h2>Empty Cart!</h2>
+            <br>
+            <h2>Come back later with loaded cart:-)</h2>
+        </div>
+    </div>
+    <% } %>
+    </body>
+
+</div>
+<% include ../layout/footer %>
+<% include ../layout/jquery %>

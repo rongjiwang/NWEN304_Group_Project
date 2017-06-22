@@ -21,11 +21,14 @@ module.exports = function Cart(oldCart) {
         }
         return arr;
     };
+
+    this.reduceByOne = function (id) {
+        this.items[id].qty--;
+        this.items[id].price -= this.items[id].item.price;
+        this.totalQty--;
+        this.totalPrice -= this.items[id].item.price;
+        if (this.items[id].qty <= 0) {
+            delete this.items[id];
+        }
+    };
 };
-/*
- if (this.items) {
- for (var key in this.items) {
- this.totalQty += this.items[key].quantity;
- this.totalPrice += this.items[key].qty * this.items[key].item.price;
- }
- }*/
