@@ -5,7 +5,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var pg = require('pg');
 var session = require('express-session');
+var pgSession = require('connect-pg-simple')(session);
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
@@ -18,7 +20,7 @@ var app = express();
 
 
 require('./Database/passport');
-
+var cn = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
 
 
 // view engine setup
@@ -32,14 +34,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(validator());
 app.use(cookieParser());
-app.use(session({secret: 'mysupersecret', resave: false, saveUninitialized: false}));
+app.use(session({
+    store: new pgSession({conString: cn}),
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: false,
+    cookie: {maxAge: 30 * 24 * 60 * 60 * 1000} // 30 days
+}));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session()); // To store users
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
     res.locals.login = req.isAuthenticated();
+    res.locals.user = req.user;
+    res.locals.session = req.session;
     next();
 });
 
