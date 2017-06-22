@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../Database/config');
+var Cart = require('../Database/cart');
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -38,6 +40,23 @@ router.post('/search', function (req, res, next) {
         });
 
 });
+
+router.get('/addItem/:id', (req, res, next) => {
+    var productID = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+    db.any('select * from item where itemid=$1', [productID])
+        .then(data => {
+            cart.add(data[0], data[0].itemid);
+            req.session.cart = cart;
+            console.log(req.session.cart);
+            res.redirect('/');
+        })
+        .catch(error => {
+            console.log('ERROR: ' + error);
+        });
+});
+
 module.exports = router;
 
 
