@@ -1,24 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-  <% include components/head.ejs %>
+<head>
+    <% include ./layout/header %>
+</head>
+<div class="container">
+    <body>
+    <% if(!hasResult){ %>
+    <div class="alert alert-danger">
+        <%= message %>
+    </div>
+    <% } %>
+    <div class="row">
+        <% for(var i = 0; i < data.length; i++){ %>
+        <div class="col-lg-3 col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="<%= data[i].image %>" class="img-responsive" width="200" height="200">
+                <div class="caption">
+                    <h3><%= data[i].name %></h3>
+                    <p class="description"><%= data[i].description %></p>
+                    <div class="clearfix">
+                        <div class="price pull-left">$<%= data[i].price %></div>
+                        <a href="/addItem/<%= data[i].itemid%>" class="btn btn-success pull-right" role="button">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    </body>
+</div>
+<% include ./layout/footer %>
+<% include ./layout/jquery %>
 
-  <body>
-    <% include components/nav.ejs %>
-	
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-        <h2><%= title %></h2>
-      </div>
-
-    </div><!-- /.container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-   
-  </body>
-</html>

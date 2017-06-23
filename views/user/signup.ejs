@@ -1,0 +1,34 @@
+<head>
+    <% include ../layout/header %>
+</head>
+<div class="container">
+    <body>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Register</h1>
+            <% if(hasErrors){ %>
+            <% for(var i = 0; i < message.length; i++) { %>
+            <div class="alert alert-danger">
+                <%= message[i] %>
+            </div>
+            <% }} %>
+            <form action="/user/signup" method="post">
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="text" id="email" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control">
+                </div>
+                <!--Signup protection-->
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+    </body>
+
+</div>
+<% include ../layout/footer %>
+<% include ../layout/jquery %>
