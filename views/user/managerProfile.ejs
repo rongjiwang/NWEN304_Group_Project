@@ -1,0 +1,36 @@
+<head>
+    <% include ../layout/header %>
+</head>
+<div class="container">
+    <body>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h2>Profile: <%= user[0].emailaddress %></h2>
+            <hr>
+            <h3>My Orders:</h3>
+            <% for(var i = 0; i < orders.length; i++){ %>
+            <div class="panel panel-primary">
+                <div class="panel-heading">USER : <%= orders[i].username %></div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <% for(var j = 0; j < orders[i].items.length; j++){ %>
+                        <li class="list-group-item">
+                            <span><%= orders[i].items[j].item.name %> |  ( Qty: <%= orders[i].items[j].qty %> )</span>
+                            <span class="label label-primary pull-right">$<%= orders[i].items[j].price %></span>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+                <a href="/deleteOrder/<%=orders[i].orderid%>" type="button" class="btn btn-danger  btn-md pull-right">X</a>
+                <div class="panel-footer">
+                    <strong>Total Price: $<%= orders[i].cart.totalPrice %></strong>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    </body>
+
+</div>
+<% include ../layout/footer %>
+<% include ../layout/jquery %>

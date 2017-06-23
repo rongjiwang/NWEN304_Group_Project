@@ -3,7 +3,7 @@
 </head>
 <div class="container">
     <body>
-    <% if(products | products.length>0){ %>
+    <% if(products && products.length>0){ %>
     <div class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
             <ul class="list-group">
@@ -13,11 +13,9 @@
                     <span class="label label-primary">$<%= products[i].price %></span>
                     <span class="label label-primary">Units: <%= products[i].qty %></span>
                     <a href="/reduceItem/<%=products[i].item.itemid%>" type="button" class="btn btn-danger  btn-sm pull-right">
-                        <span class="glyphicon glyphicon-minus" aria-hidden="true">One</span>
-
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                     </a>
                 </li>
-
                 <% } %>
             </ul>
         </div>

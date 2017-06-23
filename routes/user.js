@@ -10,10 +10,25 @@ var csrfProtection = csrf();
 router.use(csrfProtection);
 
 
+router.get('/edit', (req, res, next) => {
+    db.any('select * from orders where active=$1 order by userid', [true])
+        .then(data => {
+            var carts;
+            data.forEach((order) => {
+                carts = new Cart(order.cart);
+                order.items = carts.generateArray();
+            });
+            res.render('user/managerProfile', {orders: data});
+        })
+        .catch(error => {
+            console.log('ERROR: ' + error);
+        });
+});
+
 router.get('/profile', isLoggedIn, (req, res, next) => {
     db.any('select * from orders where userid=$1 and active=$2', [req.user[0].userid, true])
         .then(data => {
-           // console.log(data[0].cart.items[1].qty);
+            // console.log(data[0].cart.items[1].qty);
             var carts;
             data.forEach((order) => {
                 carts = new Cart(order.cart);
@@ -22,7 +37,7 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
             res.render('user/profile', {orders: data});
         })
         .catch(error => {
-            console.log('Error: 1' + error);
+            console.log('Error: ' + error);
         });
 });
 

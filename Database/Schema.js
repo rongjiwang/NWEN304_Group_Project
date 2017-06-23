@@ -41,6 +41,7 @@ query = client.query('' +
     'totalQty INTEGER, ' +
     'totalPrice NUMERIC,' +
     'userId INTEGER REFERENCES Account (userId), ' +
+    'username VARCHAR(255) NOT NULL,' +
     'active BOOLEAN)');
 
 /*query = client.query('CREATE OR REPLACE FUNCTION trigger_id() ' +
@@ -67,22 +68,6 @@ query = client.query('CREATE TABLE session(' +
 query = client.query('ALTER TABLE session ADD CONSTRAINT session_pkey' +
     ' PRIMARY KEY (sid) NOT DEFERRABLE INITIALLY IMMEDIATE;');
 
-
-//----------Add Admins------------
-query = client.query('insert into account(' +
-    'userid,username,password,emailaddress,admin) ' +
-    'values (default,$1,$2,$3,$4)'
-    , ['rong', '123456', 'rong@ttt.com', true]);
-
-query = client.query('insert into account(' +
-    'userid,username,password,emailaddress,admin) ' +
-    'values (default,$1,$2,$3,$4)'
-    , ['raff', '123456', 'raff@ttt.com', true]);
-
-query = client.query('insert into account(' +
-    'userid,username,password,emailaddress,admin) ' +
-    'values (default,$1,$2,$3,$4)'
-    , ['ad', '123456', 'ad@ttt.com', true]);
 
 //----------Add items------------
 query = client.query('insert into item(' +
