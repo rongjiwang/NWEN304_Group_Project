@@ -33,8 +33,13 @@
                                 class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <% if(login){ %>
+                        <% if(user[0].admin){%>
+                        <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i><i class="fa fa-user-secret" aria-hidden="true"></i> <%= user[0].emailaddress %></a></li>
+                        <li><a href="/user/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Manager Mode</a></li>
+                        <%}else{%>
                         <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i><i class="fa fa-user-secret" aria-hidden="true"></i> <%= user[0].emailaddress %></a></li>
                         <li><a href="/user/profile"><i class="fa fa-address-book-o" aria-hidden="true"></i> Profile</a></li>
+                        <%}%>
                         <li role="separator" class="divider"></li>
                         <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                         <% }else{ %>
