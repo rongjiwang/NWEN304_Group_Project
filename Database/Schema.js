@@ -1,8 +1,8 @@
 /**
  * Created by rongjiwang on 28/05/17.
  */
-var pg = require('pg').native
-    , connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang"
+var pg = require('pg')
+    , connectionString = process.env.DATABASE_URL || "postgres://alcancal:helloworld@depot:5432/alcancal_jdbc"
     , client
     , query;
 
