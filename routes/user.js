@@ -37,6 +37,7 @@ router.use('/', notLoggedIn, (req, res, next) => {
 
 router.get('/signup', function (req, res, next) {
     let message = req.flash('error');
+    res.setHeader('Cache-Control', 'public, max-age=86400');
     res.render('user/signup', {csrfToken: req.csrfToken(), message: message, hasErrors: message.length > 0});
 });
 
@@ -55,6 +56,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 
 router.get('/signin', (req, res, next) => {
     let message = req.flash('error');
+    res.setHeader('Cache-Control', 'public, max-age=86400');
     res.render('user/signin', {csrfToken: req.csrfToken(), message: message, hasErrors: message.length > 0});
 });
 

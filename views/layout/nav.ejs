@@ -37,6 +37,7 @@
                         <li><a href="/user/profile"><i class="fa fa-address-book-o" aria-hidden="true"></i> Profile</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+                        <% include ./timeout %>
                         <% }else{ %>
                         <li role="separator" class="divider"></li>
                         <li><a href="/user/signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a></li>
@@ -49,4 +50,6 @@
         </div>
     </div>
 </nav>
+
+
 <% include ./jquery %>
