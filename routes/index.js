@@ -70,6 +70,19 @@ router.get('/reduceItem/:id', (req, res, next) => {
 
 });
 
+router.get('/deleteOrder/:id', (req, res, next) => {
+    var _id = req.params.id;
+    console.log(_id);
+    db.any('update orders set active=false where orderid=$1', [_id])
+        .then(data => {
+            res.redirect('/user/edit');
+        })
+        .catch(error => {
+            console.log('ERROR: ' + error);
+        });
+
+});
+
 router.get('/myCart', (req, res, next) => {
     if (!req.session.cart)
         return res.render('shopping/cart', {products: null});
@@ -85,8 +98,8 @@ router.get('/purchase', isLoggedIn, (req, res, next) => {
         res.redirect('user/signin');
     }
     else {
-        db.any('insert into orders values(default,$1,$2,$3,$4,true) returning orderid'
-            , [cart, cart.totalQty, cart.totalPrice, user[0].userid])
+        db.any('insert into orders values(default,$1,$2,$3,$4,$5,true) returning orderid'
+            , [cart, cart.totalQty, cart.totalPrice, user[0].userid, user[0].username])
             .then(data => {
                 //console.log(data[0].orderid + ' ' + user[0].userid);
                 req.session.cart = null;
