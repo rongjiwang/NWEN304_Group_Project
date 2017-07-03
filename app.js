@@ -11,8 +11,8 @@ var pgSession = require('connect-pg-simple')(session);
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
-var http = require("http");
-/*Routes*/
+//var YQL = require('yql');
+
 var index = require('./routes/index');
 var user = require('./routes/user');
 /* Init app */
@@ -20,7 +20,8 @@ var app = express();
 
 
 require('./Database/passport');
-var cn = process.env.DATABASE_URL || "postgres://alcancal:helloworld@depot:5432/alcancal_jdbc";
+//var cn = process.env.DATABASE_URL || "postgres://alcancal:helloworld@depot:5432/alcancal_jdbc";
+var cn = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
 
 
 // view engine setup

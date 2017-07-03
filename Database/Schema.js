@@ -2,9 +2,10 @@
  * Created by rongjiwang on 28/05/17.
  */
 var pg = require('pg')
-    , connectionString = process.env.DATABASE_URL || "postgres://alcancal:helloworld@depot:5432/alcancal_jdbc"
+    , connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang"
     , client
     , query;
+
 
 client = new pg.Client(connectionString);
 client.connect();
@@ -144,7 +145,7 @@ query = client.query('insert into item(' +
 query = client.query('insert into item(' +
     'itemID,image,name,description,price,quantity) ' +
     'values (default,$1,$2,$3,$4,$5)'
-    ,['http://www.geeky-gadgets.com/wp-content/uploads/2016/12/Baywatch-movie.jpg',
+    ,['https://www.geeky-gadgets.com/wp-content/uploads/2016/12/Baywatch-movie.jpg',
         'Baywatch (2017)','Devoted lifeguard Mitch Buchannon butts heads with a brash new recruit, as they uncover a criminal plot that threatens the future of the bay.'
         ,32,10]);
 
@@ -185,7 +186,7 @@ query = client.query('insert into item(' +
 query = client.query('insert into item(' +
     'itemID,image,name,description,price,quantity) ' +
     'values (default,$1,$2,$3,$4,$5)'
-    ,['http://www.geeky-gadgets.com/wp-content/uploads/2016/12/Baywatch-movie.jpg',
+    ,['https://www.geeky-gadgets.com/wp-content/uploads/2016/12/Baywatch-movie.jpg',
         'Baywatch (2017)','Devoted lifeguard Mitch Buchannon butts heads with a brash new recruit, as they uncover a criminal plot that threatens the future of the bay.'
         ,32,10]);
 
@@ -226,7 +227,7 @@ query = client.query('insert into item(' +
 query = client.query('insert into item(' +
     'itemID,image,name,description,price,quantity) ' +
     'values (default,$1,$2,$3,$4,$5)'
-    ,['http://www.geeky-gadgets.com/wp-content/uploads/2016/12/Baywatch-movie.jpg',
+    ,['https://www.geeky-gadgets.com/wp-content/uploads/2016/12/Baywatch-movie.jpg',
         'Baywatch (2017)','Devoted lifeguard Mitch Buchannon butts heads with a brash new recruit, as they uncover a criminal plot that threatens the future of the bay.'
         ,32,10]);
 
@@ -267,7 +268,7 @@ query = client.query('insert into item(' +
 query = client.query('insert into item(' +
     'itemID,image,name,description,price,quantity) ' +
     'values (default,$1,$2,$3,$4,$5)'
-    ,['http://www.geeky-gadgets.com/wp-content/uploads/2016/12/Baywatch-movie.jpg',
+    ,['https://www.geeky-gadgets.com/wp-content/uploads/2016/12/Baywatch-movie.jpg',
         'Baywatch (2017)','Devoted lifeguard Mitch Buchannon butts heads with a brash new recruit, as they uncover a criminal plot that threatens the future of the bay.'
         ,32,10]);
 
