@@ -2,9 +2,9 @@
 <script type="text/javascript">
 var idleTime = 0;
 $(document).ready(function () {
-    //Increment the idle time counter every minute.
+
     var idleInterval = setInterval(timerIncrement, 1000); // 1 second
-    //Zero the idle timer on mouse movement.
+    //resets counter when mouse moved or key pressed
     $(this).mousemove(function (e) {
         idleTime = 0;
     });
@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 function timerIncrement() {
     idleTime = idleTime + 1;
-    if (idleTime > 9) { // 20 second
+    if (idleTime > 9) { // redirects to logout after 10 seconds
         window.location.href = "/user/logout";
     }
 }
