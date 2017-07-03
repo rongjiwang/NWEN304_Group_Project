@@ -11,7 +11,7 @@ var YQL = require('yql');
 router.get('/', function (req, res, next) {
     db.any('select * from item').then(data => {
         //console.log(data);
-        res.setHeader('Cache-Control', 'max-age=43200, must-revalidate');//cache for 12 hours max
+        //res.setHeader('Cache-Control', 'max-age=43200, must-revalidate');//cache for 12 hours max
         res.render('index', {title: 'Lift-Style', data: data, message: '', hasResult: true});
         
     }).catch(error => {
