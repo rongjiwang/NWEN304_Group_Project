@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../Database/config');
 var Cart = require('../Database/cart');
-//var YQL = require('yql');
+var YQL = require('yql');
 
 
 /* GET home page. */
@@ -20,7 +20,7 @@ router.get('/', function (req, res, next) {
 
 });
 
-/*router.post('/weather', function (req, res, next) {
+router.post('/weather', function (req, res, next) {
     console.log(req.body.weather);
 
     var query = 'select * from weather.forecast where u=\'c\' and woeid in (select woeid from geo.places(1) where text= \"' + req.body.weather + '\")';
@@ -35,7 +35,7 @@ router.get('/', function (req, res, next) {
         }
     });
 
-});*/
+});
 
 router.post('/search', function (req, res, next) {
     console.log(req.body.search);
