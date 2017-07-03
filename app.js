@@ -12,6 +12,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
 
+
 var index = require('./routes/index');
 var user = require('./routes/user');
 /* Init app */

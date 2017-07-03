@@ -27,6 +27,7 @@
     "pg": "^6.2.3",
     "pg-native": "^1.10.1",
     "pg-promise": "^5.9.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "yql": "^1.0.2"
   }
 }
