@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../Database/config');
 var Cart = require('../Database/cart');
+var YQL = require('yql');
 
 
 /* GET home page. */
@@ -15,6 +16,23 @@ router.get('/', function (req, res, next) {
         
     }).catch(error => {
         console.log('Error: ' + error);
+    });
+
+});
+
+router.post('/weather', function (req, res, next) {
+    console.log(req.body.weather);
+
+    var query = 'select * from weather.forecast where u=\'c\' and woeid in (select woeid from geo.places(1) where text= \"' + req.body.weather + '\")';
+    query = new YQL(query);
+    query.exec((err, data) => {
+        if (err) {
+            console.log('ERROR: ' + err);
+            res.redirect('/');
+        }
+        else {
+            res.render('weather', {weather: data.query.results.channel});
+        }
     });
 
 });

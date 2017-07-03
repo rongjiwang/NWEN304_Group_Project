@@ -1,0 +1,32 @@
+<head>
+    <% include layout/header %>
+</head>
+<div class="container">
+    <body>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><%= weather.item.title %></div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>Temperature: <%= weather.item.condition.temp %></span>
+
+                        </li>
+                        <li class="list-group-item">
+                            <span>Condition: <%= weather.item.condition.text %></span>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <img src="<%= weather.image.url %>" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+
+</div>
+<% include layout/footer %>
+<% include layout/jquery %>
