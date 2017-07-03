@@ -19,7 +19,8 @@ var app = express();
 
 
 require('./Database/passport');
-var cn = process.env.DATABASE_URL || "postgres://alcancal:helloworld@depot:5432/alcancal_jdbc";
+//var cn = process.env.DATABASE_URL || "postgres://alcancal:helloworld@depot:5432/alcancal_jdbc";
+var cn = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
 
 
 // view engine setup
