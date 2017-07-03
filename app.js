@@ -11,7 +11,7 @@ var pgSession = require('connect-pg-simple')(session);
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
-var YQL = require('yql');
+//var YQL = require('yql');
 
 var index = require('./routes/index');
 var user = require('./routes/user');
